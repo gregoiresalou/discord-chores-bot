@@ -1,5 +1,6 @@
 import os 
 import requests
+import datetime
 
 URL = "WEBHOOK_URL"
 
@@ -15,7 +16,8 @@ def planing_nas():
     else :
         i = 0 #Si le fichier n'existe pas, on donne la valeur de 0 à i
 
-    message = f"La personne qui doit nettoyer la cuisine est {person[i]}"
+    date_du_jour = datetime.date.today()
+    message = f"Today is {date_du_jour}, and the person who has to clean the apartment is : {person[i]}"
     donnee = {"content": message}
     requests.post(URL, json=donnee)
     
